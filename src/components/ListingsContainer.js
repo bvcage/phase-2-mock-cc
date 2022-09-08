@@ -29,8 +29,10 @@ function ListingsContainer({ searchVal }) {
 
   function sortListings () {
     const sortedAry = listingsAry.map(listing => listing).sort((a,b) => {
-      if (a.location < b.location) return -1;
-      if (a.location > b.location) return 1;
+      const aLoc = a.location.toLowerCase();
+      const bLoc = b.location.toLowerCase();
+      if (aLoc < bLoc) return -1;
+      if (aLoc > bLoc) return 1;
       return 0;
     })
     setListingsAry(sortedAry);
