@@ -57,6 +57,7 @@ main {
   padding: 0 1rem;
   max-width: 1200px;
   margin: 0 auto;
+  position: relative;
 }
 
 .emoji-button {
@@ -80,6 +81,14 @@ main {
 .emoji-button.delete:hover {
   text-shadow: 0 0 0 firebrick;
   cursor: pointer;
+}
+
+button.sort {
+  margin: 1rem;
+  padding: 0.5rem;
+  background: white;
+  border: 1px solid #ccc;
+  border-radius: 3px;
 }
 
 .cards {

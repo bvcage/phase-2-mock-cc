@@ -27,6 +27,15 @@ function ListingsContainer({ searchVal }) {
 
   }
 
+  function sortListings () {
+    const sortedAry = listingsAry.map(listing => listing).sort((a,b) => {
+      if (a.location < b.location) return -1;
+      if (a.location > b.location) return 1;
+      return 0;
+    })
+    setListingsAry(sortedAry);
+  }
+
   const filteredListings = listingsAry.filter(listing => listing.description.includes(searchVal));
   const listingCards = filteredListings.map(listing => {
     return (
@@ -40,6 +49,12 @@ function ListingsContainer({ searchVal }) {
 
   return (
     <main>
+      <button
+        type="button"
+        className="sort"
+        onClick={sortListings}
+        >sort by location
+      </button>
       <ul className="cards">
         {listingCards.length > 0 ? listingCards : (<h2>No results.</h2>) }
       </ul>

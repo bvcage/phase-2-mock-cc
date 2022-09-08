@@ -22,7 +22,7 @@ function Search({ searchVal, onSubmitSearch }) {
         value={tempSearchVal}
         onChange={handleChange}
       />
-      <button type="submit">🔍</button>
+      <button type="submit" className="search">🔍</button>
     </form>
   );
 }
