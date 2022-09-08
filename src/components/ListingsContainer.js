@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import ListingCard from "./ListingCard";
 
-function ListingsContainer() {
+function ListingsContainer({ searchVal }) {
 
   const [listingsAry, setListingsAry] = useState([]);
 
@@ -27,7 +27,8 @@ function ListingsContainer() {
 
   }
 
-  const listingCards = listingsAry.map(listing => {
+  const filteredListings = listingsAry.filter(listing => listing.description.includes(searchVal));
+  const listingCards = filteredListings.map(listing => {
     return (
       <ListingCard
         key={listing.id}
@@ -40,7 +41,7 @@ function ListingsContainer() {
   return (
     <main>
       <ul className="cards">
-        {listingCards}
+        {listingCards.length > 0 ? listingCards : (<h2>No results.</h2>) }
       </ul>
     </main>
   );
