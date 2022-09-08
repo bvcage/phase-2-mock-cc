@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-// import ListingCard from "./ListingCard";
+import ListingCard from "./ListingCard";
 
 function ListingsContainer() {
 
@@ -11,10 +11,16 @@ function ListingsContainer() {
     .then(data => setListingsAry(data));
   }, []);
 
+  const listingCards = listingsAry.map(listing => {
+    return (
+      <ListingCard listing={listing} />
+    )
+  })
+
   return (
     <main>
       <ul className="cards">
-        {/* use the ListingCard component to display listings */}
+        {listingCards}
       </ul>
     </main>
   );
