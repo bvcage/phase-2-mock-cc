@@ -11,9 +11,29 @@ function ListingsContainer() {
     .then(data => setListingsAry(data));
   }, []);
 
+  function deleteListing (event) {
+    const listingId = parseInt(event.target.value);
+
+    const newListingsAry = listingsAry.filter(listing => listing.id !== listingId);
+    setListingsAry(newListingsAry);
+
+    fetch(`http://localhost:6001/listings/${listingId}`, {
+      method: "DELETE",
+      headers: {
+        'Content-type': 'application/json'
+      }
+    })
+    .catch(error => console.log(error))
+
+  }
+
   const listingCards = listingsAry.map(listing => {
     return (
-      <ListingCard listing={listing} />
+      <ListingCard
+        key={listing.id}
+        listing={listing}
+        onClickDelete={deleteListing}
+      />
     )
   })
 

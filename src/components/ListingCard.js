@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-function ListingCard({ listing }) {
+function ListingCard({ listing, onClickDelete }) {
   
   const { id, description, image, location } = listing;
   const placeholderImg = "https://via.placeholder.com/300x300";
@@ -32,7 +32,12 @@ function ListingCard({ listing }) {
         )}
         <strong>{description}</strong>
         <span> · {location}</span>
-        <button className="emoji-button delete">🗑</button>
+        <button
+          className="emoji-button delete"
+          value={id}
+          onClick={onClickDelete}
+          >🗑
+        </button>
       </div>
     </li>
   );
